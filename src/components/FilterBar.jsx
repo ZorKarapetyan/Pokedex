@@ -16,10 +16,10 @@ const  FilterBar = function({data, setFilteredData, filteredData, countOnPageRes
     const [countOnPageIsOpen, setcountOnPageIsOpen] = useState(false);
     const [styleRes, setStyleRes] = useState("");
     
-    setFilteredData(data)
     
-
+    
     useEffect(() => {
+        setFilteredData(data)
         const handler = (e) => {
             if(divRef.current && !divRef.current.contains(e.target)) {
                 setsearchIsOpen(false)
