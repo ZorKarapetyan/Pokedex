@@ -3,7 +3,7 @@ import classes from "../UI/global.module.scss"
 import { useState, useRef } from "react" 
 
 
-function SearchFilter({typedData, setTypedData, divRef, setstyleIsOpen, settypeIsOpen, setcountOnPageIsOpen, setClicked, searchIsOpen, setsearchIsOpen}){
+function SearchFilter({typedData, setTypedData, divRef, setstyleIsOpen, settypeIsOpen, setcountOnPageIsOpen, data, searchIsOpen, setsearchIsOpen}){
     const buttonRef = useRef(null);
     const [searchInp, setsearchInp] = useState("");
     const [searchRes, setsearchRes] = useState("");
@@ -31,18 +31,23 @@ function SearchFilter({typedData, setTypedData, divRef, setstyleIsOpen, settypeI
         return res
     }
 
-    function clickSearch(value){
+    function clickSearch(value = ''){
 
-        
-        const newData = typedData.filter(el => {
-            const str = el.name;
-            const str2 = str.charAt(0).toUpperCase() + str.slice(1);
-            return str2.toLowerCase().includes(value)         
-        })
+        if(!value.length){
+            setTypedData(data)
+        }
+        else{
+
+            const newData = typedData.filter(el => {
+                const str = el.name;
+                const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+                return str2.toLowerCase().includes(value)         
+            })
+            setTypedData(newData)
+            setsearchedTextIsOpen(true)
+            setsearchIsOpen(false)
+        }
  
-        setTypedData(newData)
-        setsearchedTextIsOpen(true)
-        setsearchIsOpen(false)
     }
 
 

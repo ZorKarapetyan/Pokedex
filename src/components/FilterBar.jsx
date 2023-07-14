@@ -16,10 +16,12 @@ const  FilterBar = function({data, setFilteredData, filteredData, countOnPageRes
     const [countOnPageIsOpen, setcountOnPageIsOpen] = useState(false);
     const [styleRes, setStyleRes] = useState("");
     
-    
+    useEffect(()=>{
+
+        setFilteredData(data)
+    },[data])
     
     useEffect(() => {
-        setFilteredData(data)
         const handler = (e) => {
             if(divRef.current && !divRef.current.contains(e.target)) {
                 setsearchIsOpen(false)
@@ -34,7 +36,9 @@ const  FilterBar = function({data, setFilteredData, filteredData, countOnPageRes
     return (
         <Wrapper> 
             <div className={classes['filters-bar']}>
-                <SearchFilter typedData={typedData} setTypedData={setTypedData} divRef={divRef} setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} setClicked={setClicked} searchIsOpen={searchIsOpen} setsearchIsOpen={setsearchIsOpen}/>  
+                <SearchFilter typedData={typedData} setTypedData={setTypedData} divRef={divRef} 
+                setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} 
+                setcountOnPageIsOpen={setcountOnPageIsOpen} data={data} searchIsOpen={searchIsOpen} setsearchIsOpen={setsearchIsOpen}/>  
                 <div className={classes['type-style']}>
                 <TypeFilter settypeIsOpen={settypeIsOpen} setstyleIsOpen={setstyleIsOpen} setsearchIsOpen={setsearchIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} typeIsOpen={typeIsOpen} setTypedData={setTypedData} filteredData={filteredData} typedData={typedData}/>
                 <StyleFilter setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} setsearchIsOpen={setsearchIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} styleIsOpen={styleIsOpen} setTypedData={setTypedData} filteredData={filteredData} typedData={typedData} styleRes={styleRes} setStyleRes={setStyleRes} setFilteredData={setFilteredData}/>
