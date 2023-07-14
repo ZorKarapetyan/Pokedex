@@ -57,7 +57,9 @@ function MainMenu({ countOnPageRes,typedData, isLoaded}) {
         <Wrapper>
             {isLoaded? 
             <div className={classes['main-menu']}>
-                {typedData &&
+                {!typedData.length?
+                <div className={classes['loading']}>Nothing Was Found</div>:
+                typedData &&
                 typedData.map((el, i) => {
                     if(i >= (currentPage - 1) * countOnPageRes  && i < countOnPageRes * (currentPage)){
                     const str = el.name;

@@ -39,7 +39,7 @@ function SearchFilter({typedData, setTypedData, divRef, setstyleIsOpen, settypeI
             const str2 = str.charAt(0).toUpperCase() + str.slice(1);
             return str2.toLowerCase().includes(value)         
         })
-
+ 
         setTypedData(newData)
         setsearchedTextIsOpen(true)
         setsearchIsOpen(false)
