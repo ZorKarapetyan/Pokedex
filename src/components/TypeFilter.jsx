@@ -7,7 +7,7 @@ function TypeFilter({settypeIsOpen, setstyleIsOpen, setsearchIsOpen, setcountOnP
     const [typeRes, settypeRes] = useState("All Types");
 
     async function handleSelect(value){
-        setTypedData(() => filteredData.filter(el =>{
+        setTypedData((prev) => filteredData.filter(el =>{
             if(value === 'All Types'){
                 return true
             }

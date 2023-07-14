@@ -1,25 +1,22 @@
 import classes from "../UI/global.module.scss"
-import { useState } from "react"
 import arrow from "../icons/arrowUp.svg"
  
 
-function StyleFilter({setstyleIsOpen, settypeIsOpen, setsearchIsOpen, setcountOnPageIsOpen, styleIsOpen, setTypedData, setFilteredData, typedData}){
-    const [styleRes, setStyleRes] = useState("Lowest To Highest Number");
+function StyleFilter({setstyleIsOpen, settypeIsOpen, setsearchIsOpen, setcountOnPageIsOpen, styleIsOpen, setTypedData, setFilteredData, typedData, styleRes, setStyleRes}){
 
     async function handleSelect(value){
         setStyleRes(value);
            if(value === "Highest To Lowest Number"){
-              const data = typedData.reverse()
-              setFilteredData(data)
-              setTypedData(data)
+            const data = typedData.sort((a,b) => b.id - a.id)
+                   setFilteredData(data)
+                   setTypedData(data)
             }
             else if(value === 'Lowest To Highest Number') {
-                   const data = typedData[0].id !== 0?typedData.sort((a,b) => a.id - b.id):typedData
+                   const data = typedData.sort((a,b) => a.id - b.id)
                    setFilteredData(data)
                    setTypedData(data)
             }
             else if(value === "A-Z"){
-              
                     const data = typedData.sort((a, b) => {
                         const nameA = a.name.toLowerCase();
                         const nameB = b.name.toLowerCase();
@@ -35,7 +32,6 @@ function StyleFilter({setstyleIsOpen, settypeIsOpen, setsearchIsOpen, setcountOn
                     setFilteredData(data)
                    setTypedData(data)    
             } else if(value === "Z-A"){
-                
                     const data = typedData.sort((a, b) => {
                         const nameA = a.name.toLowerCase();
                         const nameB = b.name.toLowerCase();
@@ -53,7 +49,6 @@ function StyleFilter({setstyleIsOpen, settypeIsOpen, setsearchIsOpen, setcountOn
                    setTypedData(data) 
                     
             }
-            console.log(typedData);
             setstyleIsOpen(false)
     }
 

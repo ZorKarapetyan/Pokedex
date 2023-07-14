@@ -14,9 +14,11 @@ const  FilterBar = function({data, setFilteredData, filteredData, countOnPageRes
     const [searchIsOpen, setsearchIsOpen] = useState(false);
     const [styleIsOpen, setstyleIsOpen] = useState(false);
     const [countOnPageIsOpen, setcountOnPageIsOpen] = useState(false);
-
+    const [styleRes, setStyleRes] = useState("");
+    
     setFilteredData(data)
     
+
     useEffect(() => {
         const handler = (e) => {
             if(divRef.current && !divRef.current.contains(e.target)) {
@@ -35,7 +37,7 @@ const  FilterBar = function({data, setFilteredData, filteredData, countOnPageRes
                 <SearchFilter typedData={typedData} setTypedData={setTypedData} divRef={divRef} setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} setClicked={setClicked} searchIsOpen={searchIsOpen} setsearchIsOpen={setsearchIsOpen}/>  
                 <div className={classes['type-style']}>
                 <TypeFilter settypeIsOpen={settypeIsOpen} setstyleIsOpen={setstyleIsOpen} setsearchIsOpen={setsearchIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} typeIsOpen={typeIsOpen} setTypedData={setTypedData} filteredData={filteredData} typedData={typedData}/>
-                <StyleFilter setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} setsearchIsOpen={setsearchIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} styleIsOpen={styleIsOpen} setTypedData={setTypedData} setFilteredData={setFilteredData} typedData={typedData}/>
+                <StyleFilter setstyleIsOpen={setstyleIsOpen} settypeIsOpen={settypeIsOpen} setsearchIsOpen={setsearchIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} styleIsOpen={styleIsOpen} setTypedData={setTypedData} filteredData={filteredData} typedData={typedData} styleRes={styleRes} setStyleRes={setStyleRes} setFilteredData={setFilteredData}/>
                 </div>
                 <CountOnPage settypeIsOpen={settypeIsOpen} setsearchIsOpen={setsearchIsOpen} setstyleIsOpen={setstyleIsOpen} setcountOnPageIsOpen={setcountOnPageIsOpen} countOnPageRes={countOnPageRes} countOnPageIsOpen={countOnPageIsOpen} setcountOnPageRes={setcountOnPageRes}/> 
             </div>

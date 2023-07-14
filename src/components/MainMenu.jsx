@@ -40,11 +40,10 @@ function MainMenu({ countOnPageRes,typedData, isLoaded}) {
                 () => setCurrentPage(i) 
             }
             style = {currentPage === i?{color:'white', backgroundColor: "#397f84"}:{}}
-            key={uuid()}
-                >{i}</button>)
+            key={uuid()}>{i}</button>)
         }
     } else{
-        for(let i = firstvalue ; i < lastvalue; i++){
+        for(let i = firstvalue ; i <= lastvalue; i++){
             pageItems.push(<button className={classes["boo-element"]} onClick={
                 () => setCurrentPage(i) 
             }
@@ -62,7 +61,7 @@ function MainMenu({ countOnPageRes,typedData, isLoaded}) {
                 typedData.map((el, i) => {
                     if(i >= (currentPage - 1) * countOnPageRes  && i < countOnPageRes * (currentPage)){
                     const str = el.name;
-                    const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+                    const str2 = str[0].toUpperCase() + str.slice(1);
                     return (
                         <div key={uuid()} className={classes['item']} >
                             <div className={classes['item-img-div']} onClick={() => navigate(`/pokemon/${el.name}`)} key = {uuid()}>

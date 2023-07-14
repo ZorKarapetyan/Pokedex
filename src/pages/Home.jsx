@@ -30,8 +30,8 @@ function Home(){
           const pokemon = await axios.get(value.url);
           data.push(pokemon.data)
         }
-        setData(data)
-        setTypedData(data)
+        setData([...data])
+        setTypedData([...data])
         dispatch(addPokemons(data))
         setIsLoaded(true)
       };
