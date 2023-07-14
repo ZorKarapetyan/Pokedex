@@ -61,6 +61,7 @@ const FilterBar = function ({
             setcountOnPageIsOpen={setcountOnPageIsOpen}
             typeIsOpen={typeIsOpen}
             setTypedData={setTypedData}
+            filteredData={filteredData}
           />
           <StyleFilter
             setstyleIsOpen={setstyleIsOpen}
@@ -69,7 +70,7 @@ const FilterBar = function ({
             setcountOnPageIsOpen={setcountOnPageIsOpen}
             styleIsOpen={styleIsOpen}
             setTypedData={setTypedData}
-            filteredData={filteredData}
+            setFilteredData={setFilteredData}
             typedData={typedData}
             styleRes={styleRes}
             setStyleRes={setStyleRes}
